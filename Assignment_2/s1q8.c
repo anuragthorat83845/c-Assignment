@@ -5,38 +5,32 @@ percent discount for quantities over 50. */
 
 #include<stdio.h>
 int main()
-{  
-int  quantity;
-float original_price=5;
-float sp_price,discont,price;
+{
+  const float unit_price= 5.0;
+  const float discount_30= 0.10;
+  const float discount_50= 0.15;
+  
+  int quantity;
+  float price;
+  printf("enter the quantity:");
+  scanf("%d",&quantity);
 
-printf("enter the quantity =");
-scanf("%d",&quantity);
+  if(quantity<=0)
+ { 
+    printf("invalid quantity..!");
+	return 1;
+ }
+if(quantity>50)
+ price= quantity * unit_price * (1-discount_50);
 
-if(quantity>=30 && quantity<=50)
-  {
-     printf("your quantity is over the 30 quantity therefore you got' 10 percent discount\n");
 
-   
-        discont=0.05;
-         sp_price = original_price - discont;
-   
-         price= quantity*sp_price;
-    
-  }
+if(quantity>30)
+ price= quantity * unit_price * (1-discount_30);
+
 else
- printf("invalid quantity\n");
-   
+price= quantity * unit_price;
 
-
-
-
-
-
-
-
-
-
+printf("Price for %d item :RS%.2f\n",quantity,price);
 return 0;
 }
 
